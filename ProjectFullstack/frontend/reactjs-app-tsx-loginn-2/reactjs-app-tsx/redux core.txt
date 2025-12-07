@@ -1,0 +1,31 @@
+import { createStore } from 'redux';
+
+// 1. Định nghĩa action
+const INCREMENT = 'INCREMENT';
+
+function increment() {
+  return { type: INCREMENT };
+}
+
+// 2. Định nghĩa reducer
+function counterReducer(state = { count: 0 }, action) {
+  switch (action.type) {
+    case INCREMENT:
+      return { count: state.count + 1 };
+    default:
+      return state;
+  }
+}
+
+// 3. Tạo store
+const store = createStore(counterReducer);
+
+// 4. Lắng nghe thay đổi
+store.subscribe(() => console.log(store.getState()));
+
+// 5. Gửi action
+store.dispatch(increment());
+store.dispatch(increment());
+
+// 6. Nhận action
+// Dùng selector

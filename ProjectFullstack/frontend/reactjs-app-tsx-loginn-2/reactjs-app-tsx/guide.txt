@@ -1,0 +1,41 @@
+npx create-react-app reactjs-app-tsx --template typescript
+
+
+TODO
+- Bổ sung những phần đã học được cho bài thi, Lesson 1-4
+- Tạo interface Account, department sử dụng typescript
+- Tạo page Account, department để hiển thị dannh sách, data hard code
+
+
+Next Lesson:
+-Router : demo OK
+- Pass data giữa các component với nhau: demo OK
+- Các bạn về thực hành router cho department/Account page
+- Thực hành pass data giữa parent -> children component
+- Tìm Hiểu về css, html để chuẩn bị cho buổi học tiếp theo
+
+Next Lesson:
+-- UI library, dùng bootstrap
+->> update cho department/Account page  ở pages folder 
+sử dụng bootstrap thay cho css + html cũ
+
+Next Lesson:
+- Tạo CRUD cho department/Account page sử dụng bootstrap (form input, select): Department OK
+
+Next Lesson:
+- Tạo CRUD cho Account page sử dụng bootstrap tương tự Account đã demo: OK
+
+Next Lesson:
+- Tích hợp API vào account page + sử dụng HOOK: OK
+
+
+Next Lesson:
+- Tạo Login page + call API: OK
+- Apply authen header khi call api backend sử dụng base authen, jwt authen: Ok nếu dùng mock
+
+- Dùng store để check authen, nếu chưa authen thì shoow loginn page: TODO
+->> Authen rồi thì hiển thị menu, show page.: OK
+
+store: localstore, store của redux
+
+Update UI, layout: TODO
