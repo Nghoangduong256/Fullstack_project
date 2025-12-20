@@ -1,0 +1,44 @@
+// store.tsx
+import { configureStore, createSlice } from '@reduxjs/toolkit';
+
+// Sử dụng Redux Toolkit để đơn giản hơn
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1;
+    },
+  },
+});
+
+export const { increment } = counterSlice.actions;
+export const store = configureStore({
+  reducer: { counter: counterSlice.reducer },
+});
+
+
+// App.tsx
+import React from 'react';
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { store, increment } from './store';
+
+function Counter() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <p>Giá trị hiện tại: {count}</p>
+      <button onClick={() => dispatch(increment())}>Tăng</button>
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Provider store={store}>
+      <Counter />
+    </Provider>
+  );
+}
