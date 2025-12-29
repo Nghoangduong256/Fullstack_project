@@ -1,0 +1,33 @@
+package com.vti.springdatajpa.repository;
+
+import com.vti.springdatajpa.dto.AccountDto;
+import com.vti.springdatajpa.entity.AccountEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import java.util.List;
+
+public interface AccountRepository extends JpaRepository<AccountEntity, Integer>
+        , JpaSpecificationExecutor<AccountEntity> {
+
+    @Query(value = "select a.id, a.username, a.full_name, d.name, p.name"
+            + " from Account a"
+            + " left join Department d on a.department_id = d.id"
+            , nativeQuery = true)
+    List<Object[]> findAllAccount();
+
+    @Query(value = "select a.id as Account_id, a.username, a.full_name, d.name as department_name"
+                    + " from Account a"
+                    + " left join department d on a.department_id = d.id"
+                    + " where a.id = :id", nativeQuery = true)
+    Object findByAccountId(@Param("id") int id);
+
+    @Query(value = "select a.username as Account_username, a.id, a.full_name, d.name as department_name"
+            + " from Account a"
+            + " left join department d on a.department_id = d.id"
+            + " where a.username like %:name%", nativeQuery = true)
+    Object findByAccountName(@Param("name") String name);
+
+}
